@@ -5,12 +5,13 @@ def add_ingot(purse):
 	if "gold_ingots" in newPurse:
 		newPurse.update({"gold_ingots" : purse["gold_ingots"] + 1})
 	else:
-		newPurse.update({"gold_ingots" : 0})
-
+		newPurse.update({"gold_ingots" : 1})
 	return newPurse
 
 def get_ingot(purse):
 	newPurse = purse.copy()
+	if "gold_ingots" in newPurse and newPurse["gold_ingots"] > 0:
+		newPurse.update({"gold_ingots" : newPurse["gold_ingots"] - 1})
 	return newPurse
 
 def empty(purse):
