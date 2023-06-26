@@ -2,7 +2,7 @@ import sys
 sys.path.append("../ex00")
 from ex00 import get_ingot, add_ingot, empty
 
-def split_booty(*purse):
+def split_booty(*purse: dict[str, int]) -> list(dict[str, int]):
 	purses = {"gold_ingots":0}
 	for dict in purse:
 		temp = {}
@@ -16,13 +16,13 @@ def split_booty(*purse):
 	if purses["gold_ingots"] == 0: #yeah,yeah, from checklist
 		return ({},{},{})
 	if purses["gold_ingots"] % 3 == 0:
-		gold_ingots = {"gold_ingots":purses["gold_ingots"] / 3}
+		gold_ingots = {"gold_ingots":purses["gold_ingots"] // 3}
 		return (gold_ingots, gold_ingots, gold_ingots)
 	elif (purses["gold_ingots"] - 1) % 3 == 0:
-		gold_ingots = {"gold_ingots":((purses["gold_ingots"]) - 1) / 3}
-		return (gold_ingots, gold_ingots, {"gold_ingots":((purses["gold_ingots"]) - 1) / 3 + 1})
+		gold_ingots = {"gold_ingots":((purses["gold_ingots"]) - 1) // 3}
+		return (gold_ingots, gold_ingots, {"gold_ingots":((purses["gold_ingots"]) - 1) // 3 + 1})
 	gold_ingots = {"gold_ingots" : (purses["gold_ingots"] - 2) / 3 + 1}
-	return (gold_ingots,gold_ingots, {"gold_ingots": (purses["gold_ingots"] - 2) / 3 })
+	return (gold_ingots,gold_ingots, {"gold_ingots": (purses["gold_ingots"] - 2) // 3 })
 
 
 def main():

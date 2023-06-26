@@ -1,8 +1,9 @@
 import sys
 sys.path.append("../ex00")
 from ex00 import get_ingot, add_ingot, empty
+from typing import Callable
 
-def my_decorator(func):
+def my_decorator(func: Callable) -> Callable:
 	def wrapper(*args):
 		print("SQUEAK")
 		return func(*args)
